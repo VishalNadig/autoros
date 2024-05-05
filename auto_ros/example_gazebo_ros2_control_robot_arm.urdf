@@ -1,0 +1,251 @@
+<robot xmlns:xacro="https://wiki.ros.org/xacro.org" name="robot_arm">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-3.6736957087502E-09 0.000768796774744424 0.0170975652627064" rpy="0 0 0" />
+      <mass value="0.0320298242582383" />
+      <inertia ixx="1.230" ixy="1.50" ixz="1.22" iyy="1.32" iyz="1.23" izz="1.20" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link_1">
+    <inertial>
+      <origin xyz="-0.000562889293244218 5.41052922434782E-05 0.0200185797403788" rpy="0 0 0" />
+      <mass value="0.0408129272891316" />
+      <inertia ixx="1.23" ixy="1.45" ixz="1.97" iyy="1.48" iyz="3.09" izz="1.60" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_1.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0 0.010276 0.0497" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="link_1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="link_2">
+    <inertial>
+      <origin xyz="0.000512945525683747 0.00346122101049675 0.0339682706620802" rpy="0 0 0" />
+      <mass value="0.0339722553127295" />
+      <inertia ixx="1.21" ixy="1.36" ixz="2.51" iyy="1.15" iyz="1.23" izz="2.01" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_2.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_2" type="revolute">
+    <origin xyz="-0.01045 -0.0262 0.027" rpy="1.5708 0 0" />
+    <parent link="link_1" />
+    <child link="link_2" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="link_3">
+    <inertial>
+      <origin xyz="0.000562889292584842 -5.41052929189864E-05 0.0200185797402232" rpy="0 0 0" />
+      <mass value="0.0408129272873878" />
+      <inertia ixx="1.36" ixy="1.45" ixz="1.87" iyy="1.48" iyz="2.09" izz="1.60" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_3.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0.00617164237626115 0.0327000000000005 0.0473419482984569" rpy="-1.5707963267949 0 0" />
+    <parent link="link_2" />
+    <child link="link_3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="link_4">
+    <inertial>
+      <origin xyz="-0.000503893110031225 -0.00346122101049695 0.0326158350302939" rpy="0 0 0" />
+      <mass value="0.033972255312733" />
+      <inertia ixx="1.09" ixy="1.365" ixz="2.51" iyy="1.15" iyz="2.82" izz="2.01" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_4.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_4" type="revolute">
+    <origin xyz="0.01045 0.0262000000000001 0.0270000000000001" rpy="-1.5707963267949 0 0" />
+    <parent link="link_3" />
+    <child link="link_4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="link_5">
+    <inertial>
+      <origin xyz="-5.41052938511088E-05 0.0005628892917433 0.0200185855057584" rpy="0 0 0" />
+      <mass value="0.0408129272850215" />
+      <inertia ixx="1.48" ixy="2.15" ixz="2.46" iyy="2.87" iyz="1.97" izz="1.60" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_5.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_5" type="revolute">
+    <origin xyz="-0.00603186025968994 -0.0327 0.0264424157448359" rpy="1.5707963267949 0 0" />
+    <parent link="link_4" />
+    <child link="link_5" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="link_6">
+    <inertial>
+      <origin xyz="0 -2.77555756156289E-17 -0.00155713942372891" rpy="0 0 0" />
+      <mass value="0.000787237044364494" />
+      <inertia ixx="1.89" ixy="2.13" ixz="2.62" iyy="1.89" iyz="1.23" izz="2.43" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_6.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_control/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_6" type="revolute">
+    <origin xyz="0.0261999999999998 0.0104500000000002 0.0269999999999997" rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent link="link_5" />
+    <child link="link_6" />
+    <axis xyz="0 0 -1" />
+    <limit lower="0" upper="3.14" effort="0" velocity="0" />
+  </joint>
+<gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <parameters>/home/vishal/armoth-e_ws/install/robot_control/share/robot_control/config/robot_arm_controller.yaml</parameters>
+        <robotNamespace>/</robotNamespace>
+    </plugin>
+</gazebo>
+<ros2_control name="GazeboSystem" type="system">
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+  <joint name="joint_1">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint_2">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint_3">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint_4">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint_5">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+  <joint name="joint_6">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+</ros2_control>
+</robot>

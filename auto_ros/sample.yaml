@@ -1,0 +1,76 @@
+description: Description of the workspace project
+maintainer_emails: Email of maintainers
+maintainers: Names of maintainers
+name_workspace: armoth-e_ws
+packages:
+- build_type: python
+  dependencies:
+  - rclpy
+  - geometry_msgs
+  - std_msgs
+  description: null
+  gazebo:
+    gazebo_folder_path: /home/vishal/armoth-e_ws/src/robot_control/model
+    gazebo_plugin:
+      controller_filepath: /home/vishal/armoth-e_ws/src/robot_control/config/ros2_controllers.yaml
+      filename: libgazebo_ros2_control.so
+    launch_gazebo: true
+    ros2_control:
+      broadcasters:
+        name:
+        - joint_state_broadcaster
+      controllers:
+        name:
+        - velocity_controller
+        - joint_trajectory_controller
+      name: GazeboSystem
+      plugin: gazebo_ros2_control/GazeboSystem
+      type: system
+  launch:
+    filename: launch.py
+    launch_folder_path: launch
+  name: robot_control
+  nodes:
+  - actions: null
+    name: minimal_publisher
+    publishers:
+    - callback_function: message_publisher
+      name: minimal_publisher
+      queue_size: 10
+      rate: 1
+      topic: /minimal_publisher
+      type: String
+    services: null
+    subscribers:
+    - callback_function: message_subscriber
+      name: minimal_subscriber
+      queue_size: 10
+      rate: 1
+      topic: /minimal_publisher
+      type: String
+  - actions: null
+    name: minimal_subscriber
+    publishers: null
+    services: null
+    subscribers:
+    - callback_function: message_subscriber
+      name: minimal_subscriber
+      queue_size: 10
+      rate: 1
+      topic: /minimal_publisher
+      type: String
+  - actions: null
+    name: robot_joint_control
+    publishers:
+    - callback_function: robot_control_publisher_callback
+      name: robot_joint_control_publisher
+      queue_size: 10
+      rate: 1
+      topic: /joint_trajectory_controller/joint_trajectory
+      type: JointTrajectory
+    services: null
+    subscribers: null
+  urdf:
+    filename: robot_arm.urdf
+    urdf_folder_path: /home/vishal/Documents/robot_arm
+workspace_path: /home/vishal/armoth-e_ws/
